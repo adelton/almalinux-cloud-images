@@ -13,11 +13,11 @@ bootloader --timeout=0 --location=mbr --append="console=tty0 console=ttyS0,11520
 
 %pre --erroronfail
 parted -s -a optimal /dev/sda -- mklabel gpt
-parted -s -a optimal /dev/sda -- mkpart root xfs 51MiB 100%
+parted -s -a optimal /dev/sda -- mkpart root ext4 51MiB 100%
 parted -s -a optimal /dev/sda -- mkpart '"EFI System Partition"' fat32 1MiB 51MiB set 2 esp on
 %end
 
-part / --fstype=xfs --onpart=sda1
+part / --fstype=ext4 --onpart=sda1
 part /boot/efi --fstype=efi --onpart=sda2
 
 rootpw --plaintext almalinux
@@ -31,6 +31,7 @@ tar
 -dracut-config-rescue
 -firewalld
 %end
+# We tried to -xfsprogs here but cloud-init pulls it in as a dependency anyway.
 
 # disable kdump service
 %addon com_redhat_kdump --disable
