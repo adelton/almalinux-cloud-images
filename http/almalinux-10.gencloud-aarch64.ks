@@ -11,11 +11,14 @@ services --enabled=sshd
 
 bootloader --timeout=0 --location=mbr --append="console=tty0 console=ttyS0,115200n8 no_timer_check net.ifnames=0"
 
-zerombr
-clearpart --all --initlabel
-part /boot/efi --fstype=efi --size=200
-part /boot --fstype=xfs --size=1024
-part / --fstype=xfs --grow
+%pre --erroronfail
+parted -s -a optimal /dev/sda -- mklabel gpt
+parted -s -a optimal /dev/sda -- mkpart '"EFI System Partition"' fat32 1MiB 202MiB set 1 esp on
+parted -s -a optimal /dev/sda -- mkpart root xfs 202MiB 100%
+%end
+
+part /boot/efi --fstype=efi --onpart=sda1
+part / --fstype=xfs --onpart=sda2
 
 rootpw --plaintext almalinux
 reboot --eject
