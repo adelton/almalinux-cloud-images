@@ -237,7 +237,7 @@ variable "gencloud_disk_size" {
   description = "The size in GB of hard disk of VM"
 
   type    = string
-  default = "10G"
+  default = "2G"
 }
 
 variable "gencloud_ssh_username" {
