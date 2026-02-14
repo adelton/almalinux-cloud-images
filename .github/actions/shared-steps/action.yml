@@ -470,8 +470,8 @@ runs:
 
         # Partition number with root file-system
         case ${{ inputs.arch }} in
-          x86_64*) partition=4 ;;
-          aarch64*) partition=3 ;;
+          x86_64*) partition=1 ;;
+          aarch64*) partition=1 ;;
           *) false ;;
         esac
 
