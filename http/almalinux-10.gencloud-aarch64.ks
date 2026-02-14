@@ -13,8 +13,8 @@ bootloader --timeout=0 --location=mbr --append="console=tty0 console=ttyS0,11520
 
 %pre --erroronfail
 parted -s -a optimal /dev/sda -- mklabel gpt
-parted -s -a optimal /dev/sda -- mkpart '"EFI System Partition"' fat32 1MiB 202MiB set 1 esp on
-parted -s -a optimal /dev/sda -- mkpart root xfs 202MiB 100%
+parted -s -a optimal /dev/sda -- mkpart '"EFI System Partition"' fat32 1MiB 51MiB set 1 esp on
+parted -s -a optimal /dev/sda -- mkpart root xfs 51MiB 100%
 %end
 
 part /boot/efi --fstype=efi --onpart=sda1
