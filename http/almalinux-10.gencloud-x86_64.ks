@@ -30,6 +30,20 @@ tar
 -*firmware
 -dracut-config-rescue
 -firewalld
+-c-ares
+-ethtool
+-gssproxy
+-hdparm
+-jansson
+-kexec-tools
+-lsscsi
+-NetworkManager-tui
+-ncurses
+-polkit
+-sg3_utils
+-sg3_utils-libs
+-sssd-common
+-sssd-kcm
 %end
 # We tried to -xfsprogs here but cloud-init pulls it in as a dependency anyway.
 
