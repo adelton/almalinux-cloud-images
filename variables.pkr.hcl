@@ -158,7 +158,7 @@ variable "memory_aarch64" {
   description = "The amount of memory to use when building the AArch64 VM in megabytes"
 
   type    = number
-  default = 4096
+  default = 3000
 }
 
 variable "memory_ppc64le" {

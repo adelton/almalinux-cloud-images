@@ -328,7 +328,7 @@ runs:
         # Enable KVM group perms
         echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
         sudo udevadm control --reload-rules
-        sudo udevadm trigger --name-match=kvm
+        sudo udevadm trigger --name-match=kvm || true
 
     - name: Unload KVM modules
       if: inputs.type == 'vagrant_virtualbox' && inputs.runner == 'aws-ec2'
