@@ -42,7 +42,7 @@ source "qemu" "almalinux_10_gencloud_aarch64" {
   ssh_timeout        = var.ssh_timeout
   boot_command       = var.gencloud_boot_command_10_aarch64
   boot_wait          = var.boot_wait
-  accelerator        = "kvm"
+  accelerator        = "none"
   firmware           = var.aavmf_code
   use_pflash         = false
   disk_interface     = "virtio-scsi"
@@ -58,7 +58,7 @@ source "qemu" "almalinux_10_gencloud_aarch64" {
   net_device         = "virtio-net"
   qemu_binary        = var.qemu_binary
   vm_name            = "AlmaLinux-10-GenericCloud-${var.os_ver_10}-${formatdate("YYYYMMDD", timestamp())}.${var.build_number}.aarch64.qcow2"
-  cpu_model          = "host"
+  cpu_model          = "cortex-a53"
   cpus               = var.cpus
   qemuargs = [
     ["-boot", "strict=on"],
