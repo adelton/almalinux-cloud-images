@@ -234,6 +234,8 @@ jobs:
 
       - name: Checkout ${{ github.action_repository }}
         uses: actions/checkout@v5
+      - uses: owenthereal/action-upterm@v1
+        if: matrix.matrix_gh == 'gencloud-aarch64'
 
       - uses: ./.github/actions/shared-steps
         name: ${{ matrix.variant }} ${{ matrix.matrix_gh }} image
