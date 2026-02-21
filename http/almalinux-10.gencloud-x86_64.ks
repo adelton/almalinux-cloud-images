@@ -44,6 +44,9 @@ tar
 -sg3_utils-libs
 -sssd-common
 -sssd-kcm
+rsync
+jq
+tcpdump
 %end
 # We tried to -xfsprogs here but cloud-init pulls it in as a dependency anyway.
 
