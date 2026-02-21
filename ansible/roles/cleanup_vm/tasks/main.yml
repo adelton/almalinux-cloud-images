@@ -1,10 +1,4 @@
 ---
-- name: Remove older versions kernel and other packages
-  ansible.builtin.command: dnf -y remove --oldinstallonly
-  register: removeoldoutput
-  changed_when: removeoldoutput.rc == 0
-  ignore_errors: yes
-
 - name: Include sbom_data role for SBOM data collection
   include_role:
     name: sbom_data
@@ -37,9 +31,6 @@
   loop: "{{ networkmanager_system_connection_files.files }}"
   loop_control:
     label: "{{ item.path }}"
-
-- name: Delete DNF cache
-  command: dnf clean all
 
 - name: Find DNF history files
   ansible.builtin.find:

@@ -33,7 +33,6 @@ tar
 -ethtool
 -gssproxy
 -hdparm
--jansson
 -kexec-tools
 -lsscsi
 -NetworkManager-tui
@@ -47,6 +46,12 @@ qemu-guest-agent
 rsync
 jq
 tcpdump
+podman
+-dnf
+-yum
+cloud-init
+cloud-utils-growpart
+dracut-config-generic
 %end
 # We tried to -xfsprogs here but cloud-init pulls it in as a dependency anyway.
 
